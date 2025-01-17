@@ -75,10 +75,9 @@ import (
 	ibctransferkeeper "github.com/cosmos/ibc-go/v8/modules/apps/transfer/keeper"
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 
-	leaderboardmodulekeeper "github.com/cosmonaut/leaderboard/x/leaderboard/keeper"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
-	"github.com/cosmonaut/leaderboard/docs"
+	"github.com/igor-sikachyna/leaderboard/docs"
 )
 
 const (
@@ -141,7 +140,6 @@ type App struct {
 	ScopedICAHostKeeper       capabilitykeeper.ScopedKeeper
 	ScopedKeepers             map[string]capabilitykeeper.ScopedKeeper
 
-	LeaderboardKeeper leaderboardmodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// simulation manager
@@ -245,7 +243,6 @@ func New(
 		&app.NFTKeeper,
 		&app.GroupKeeper,
 		&app.CircuitBreakerKeeper,
-		&app.LeaderboardKeeper,
 		// this line is used by starport scaffolding # stargate/app/keeperDefinition
 	); err != nil {
 		panic(err)

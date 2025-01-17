@@ -20,7 +20,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/cosmonaut/leaderboard/app"
+	"github.com/igor-sikachyna/leaderboard/app"
 )
 
 // NewRootCmd creates a new root command for leaderboardd. It is called once in the main function.

@@ -24,7 +24,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/cosmonaut/leaderboard/app"
+	"github.com/igor-sikachyna/leaderboard/app"
 )
 
 func initRootCmd(

@@ -7,7 +7,7 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: github.com/cosmonaut/leaderboard/api
+    default: github.com/igor-sikachyna/leaderboard/api
     except:
       - buf.build/googleapis/googleapis
       - buf.build/cosmos/gogo-proto
