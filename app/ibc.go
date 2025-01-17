@@ -35,7 +35,10 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 	solomachine "github.com/cosmos/ibc-go/v8/modules/light-clients/06-solomachine"
 	ibctm "github.com/cosmos/ibc-go/v8/modules/light-clients/07-tendermint"
+
 	// this line is used by starport scaffolding # ibc/app/import
+	leaderboardmodule "github.com/igor-sikachyna/leaderboard/x/leaderboard/module"
+	leaderboardmoduletypes "github.com/igor-sikachyna/leaderboard/x/leaderboard/types"
 )
 
 // registerIBCModules register IBC keepers and non dependency inject modules.
@@ -160,6 +163,8 @@ func (app *App) registerIBCModules(appOpts servertypes.AppOptions) error {
 		AddRoute(icacontrollertypes.SubModuleName, icaControllerIBCModule).
 		AddRoute(icahosttypes.SubModuleName, icaHostIBCModule)
 
+	leaderboardIBCModule := ibcfee.NewIBCMiddleware(leaderboardmodule.NewIBCModule(app.LeaderboardKeeper), app.IBCFeeKeeper)
+	ibcRouter.AddRoute(leaderboardmoduletypes.ModuleName, leaderboardIBCModule)
 	// this line is used by starport scaffolding # ibc/app/module
 
 	app.IBCKeeper.SetRouter(ibcRouter)
