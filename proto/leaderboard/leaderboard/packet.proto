@@ -1,13 +1,27 @@
 syntax = "proto3";
+
 package leaderboard.leaderboard;
 
 option go_package = "github.com/igor-sikachyna/leaderboard/x/leaderboard/types";
 
 message LeaderboardPacketData {
-    oneof packet {
-        NoData noData = 1;
-    }
+  oneof packet {
+    NoData               noData           = 1;
+    IbcTopRankPacketData ibcTopRankPacket = 2;
+  }
 }
 
-message NoData {
+message NoData {}
+
+// IbcTopRankPacketData defines a struct for the packet payload
+message IbcTopRankPacketData {
+  string playerId = 1;
+  uint64 rank     = 2;
+  uint64 score    = 3;
 }
+
+// IbcTopRankPacketAck defines a struct for the packet acknowledgment
+message IbcTopRankPacketAck {
+  string playerId = 1;
+}
+
